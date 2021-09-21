@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ClientNavBar from "../components/clientNavBar";
 import Kakaomap from "../components/kakaomap";
 
 interface IProps {
@@ -59,6 +60,7 @@ function Map({ children }: IProps) {
 	return (
 		<>
 			<Kakaomap ref={kakaoMap} />
+			<ClientNavBar />
 		</>
 	);
 }
