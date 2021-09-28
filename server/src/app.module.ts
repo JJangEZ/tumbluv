@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Cafes } from 'entities/cafes.entity';
@@ -24,7 +25,8 @@ import { Menus } from 'entities/menus.entity';
       synchronize: true,
       autoLoadEntities: true,
       charset: "utf8mb4" //  회원가입시 이모지가 들어갈 경우를 대비.
-    })
+    }),
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
