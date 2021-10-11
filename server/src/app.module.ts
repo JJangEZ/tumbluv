@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Cafes } from 'entities/cafes.entity';
 import { Coupons } from 'entities/coupons.entity';
@@ -10,6 +9,7 @@ import { Users } from 'entities/users.entity';
 import { CafeImages } from 'entities/cafe.images.entity';
 import { MenuImages } from 'entities/menu.image.entity';
 import { Menus } from 'entities/menus.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [

@@ -29,10 +29,18 @@ export class AuthService {
             
             response.cookie('accessToken', accessToken)
             response.cookie('refreshToken', refreshToken)
-            response.send('successfully sign in')
+            response.send({message: 'successfully sign in'})
             return;
         } else {
             throw new UnauthorizedException('logIn failed')
         }
+    }
+
+    async googleSignin(request, response){
+        // 데베에 있는 유저면 로그인만 진행, 없으면 데베에 추가
+        // 액세스, 리프레시 토큰 만들어서 추가
+        console.log('request.user', request.user)
+
+        
     }
 }

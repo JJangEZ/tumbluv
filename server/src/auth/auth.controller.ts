@@ -1,5 +1,6 @@
-import { Body, Controller, Post, Req, Res, UseGuards, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, Get, Req, Res, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { response } from 'express';
 import { AuthService } from './auth.service';
 import { AuthCredentialDto } from './dto/authCredentialDto';
 
@@ -17,6 +18,16 @@ export class AuthController {
     @Post('/signin')
     signIn(@Req() request, @Res({passthrough: true}) response, @Body(ValidationPipe) AuthCredentialDto: AuthCredentialDto): Promise<{accessToken: string}> {
         return this.authService.signIn(request, response, AuthCredentialDto)
+    }
+
+    @Get('/signin/google')
+    @UseGuards(AuthGuard('google'))
+    async googleAuth(@Req() reqest){}
+
+    @Get('/signin/google/callback')
+    @UseGuards(AuthGuard('google'))
+    googleAuthCallback(@Req() request, @Res({passthrough: true}) response){
+        return this.authService.googleSignin(request, response)
     }
 
     // @Post('/authTest')
