@@ -24,6 +24,7 @@ import { Menus } from 'entities/menus.entity';
       entities: [Cafes,Coupons,Users,CafeImages,MenuImages,Menus],
       synchronize: true,
       autoLoadEntities: true,
+      keepConnectionAlive: true,
       charset: "utf8mb4" //  회원가입시 이모지가 들어갈 경우를 대비.
     }),
     AuthModule
